@@ -7,5 +7,5 @@ Made with [python-cookiecutter](https://github.com/jamwine/python-cookiecutter)
 
 # Python-Utils
 
-* **Package**: {{ cookiecutter.project_name.lower().replace('-', '_') }}
+* **Package**: python_utils
 * **Description**: A Python package that includes several common Python util functions.
