@@ -1,5 +1,7 @@
 import python_utils.common_utils as cu
 import python_utils.scraping_utils as su
+import python_utils.db_utils as du
+from sqlite3 import IntegrityError
 # Objective: Scrape Quotes from page 1 to 3
 
 
@@ -7,6 +9,10 @@ class Bs4Template:
     def __init__(self):
         self.all_quotes = []
         pages = 3
+
+        # Storage directories
+        self.db_path = "../databases/scraped_data.db"
+        self.data_path = "../datasets/scraped_data.csv"
 
         # DOM keywords
         self.quote_tag = 'span'
@@ -29,8 +35,32 @@ class Bs4Template:
 
         # After all pages are scraped, store the data in a DataFrame
         df = cu.create_df({'quotes': self.all_quotes})
-        cu.save_df(df, "../datasets/scraped_data.csv")
+        cu.save_df(df, self.data_path)
         cu.display_df(df, 10)
+
+        # Create a SQLite connection using the provided database path.
+        with du.SQLiteConnection(self.db_path) as db:
+            # Create a 'quotes' table if it doesn't already exist.
+            db.execute("""
+                CREATE TABLE IF NOT EXISTS quotes(
+                    quote_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    quotes TEXT NOT NULL,
+                    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(quotes)
+                )""")
+            # Print information about the 'quotes' table.
+            print("Quotes: ", *db.execute("PRAGMA table_info(quotes)"), sep="\n")
+
+        # Iterate through each quote in the 'all_quotes' list.
+        for quote in self.all_quotes:
+            # Create a new SQLite connection for each quote.
+            with du.SQLiteConnection(self.db_path) as db:
+                # Insert the current quote into the 'quotes' table if not exists.
+                try:
+                    db.execute("INSERT INTO quotes (quotes) VALUES (?)", (quote,))
+                # Catch Exception if failed.
+                except IntegrityError as e:
+                    print(f"Data Insertion unsuccessful: {e}")
 
 
 if __name__ == "__main__":
