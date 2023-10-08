@@ -16,9 +16,10 @@ $ pip install git+https://github.com/shahriar-rahman/Python-Utils
 ```
 • Next, import and initialize it like the example below:
 ```py3
-from python_utils import common_utils 
-df = common_utils.create_df({'some_values': [5, 3, 2, 4, 9]})
-print(df.head(5))
+from python_utils import common_utils        
+
+df = common_utils.create_df({'some_values': [5, 3, 2, 4, 9]})      
+print(df.head(5))      
 ```
 
 
