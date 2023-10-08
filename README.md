@@ -22,4 +22,7 @@ df = common_utils.create_df({'some_values': [5, 3, 2, 4, 9]})
 print(df.head(5))      
 ```
 
+## Usecases
+• Create Dataframe
+`create_df(key_dict={'col': 'values'})`
 
