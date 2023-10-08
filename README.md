@@ -25,6 +25,6 @@ print(df.head(5))
 ## Usecases
 • Create Dataframe
 ```py3
-create_df(key_dict={'col': 'values'})
+obj.create_df(key_dict={'col': 'values'})
 ```
 
