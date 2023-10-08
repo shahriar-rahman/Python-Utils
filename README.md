@@ -9,6 +9,8 @@
 ## Description
 A Python package that includes several common Python util functions.
 
+<br/>
+
 ## Installation
 • Install the package using pip:
 ```pip
