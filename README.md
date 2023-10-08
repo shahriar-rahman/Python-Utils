@@ -22,6 +22,8 @@ df = common_utils.create_df({'some_values': [5, 3, 2, 4, 9]})
 print(df.head(5))      
 ```
 
+<br/>
+
 ## Usecases
 • Create Dataframe
 ```py3
