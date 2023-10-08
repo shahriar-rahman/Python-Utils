@@ -25,6 +25,13 @@ print(df.head(5))
 ## Usecases
 • Create Dataframe
 ```py3
-obj.create_df(key_dict={'col': 'values'})
+obj.create_df(key_dict={'col': 'values'})         
 ```
-
+• Save Dataframe
+```py3
+obj.create_df(df, path)         
+```
+• Display Dataframe
+```py3
+obj.create_df(df, contents=5)         
+```
