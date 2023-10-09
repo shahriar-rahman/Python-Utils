@@ -5,3 +5,4 @@ pandas==2.0.0
 scrapy_user_agents==0.1.1
 Twisted==22.10.0
 extension==1.0.0
+fastparquet==2023.8.0

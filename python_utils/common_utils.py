@@ -20,7 +20,8 @@ def save_df(df: pd.core.frame.DataFrame, ext_type: str, path: str):
     # Define a mapping of file extensions to corresponding DataFrame export functions.
     extension_mapping = {
         'csv': df.to_csv,  # Map 'csv' extension to DataFrame's to_csv method.
-        'xlsx': df.to_excel  # Map 'xlsx' extension to DataFrame's to_excel method.
+        'xlsx': df.to_excel,  # Map 'xlsx' extension to DataFrame's to_excel method.
+        'parquet': df.to_parquet  # Map 'parquet' extension to DataFrame's to_parquet method.
     }
     try:
         # Save the DataFrame to the specified path
@@ -44,8 +45,9 @@ def display_df(df: pd.core.frame.DataFrame, contents: int):
 def load_df(ext_type: str, path: str, d_type: extension = False):
     # Define a dictionary that maps file extensions to corresponding read functions
     extension_mapping = {
-        'csv': pd.read_csv,
-        'xlsx': pd.read_excel
+        'csv': pd.read_csv,   # Map 'csv' extension to DataFrame's read_csv method.
+        'xlsx': pd.read_excel,   # Map 'xlsx' extension to DataFrame's read_excel method.
+        'parquet': pd.read_parquet   # Map 'parquet' extension to DataFrame's read_parquet method.
     }
 
     if d_type:
@@ -54,4 +56,3 @@ def load_df(ext_type: str, path: str, d_type: extension = False):
     else:
         # If no d_type is specified, read the file without it
         return extension_mapping[ext_type](path)
-
