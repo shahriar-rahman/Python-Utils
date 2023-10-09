@@ -48,7 +48,7 @@ class SeleniumTemplate:
             driver.quit()
 
         # After all pages are scraped, store the data in a DataFrame
-        df = cu.create_df({'quotes': self.all_quotes})
+        df = cu.create_df({'quotes': self.all_quotes}, 'pl')
         cu.save_df(df, 'csv', self.data_path)
         cu.display_df(df, 10)
 
