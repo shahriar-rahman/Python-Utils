@@ -48,7 +48,7 @@ class ScrapyTemplate(scrapy.Spider):
     def closed(self, reason):
         # After all pages are scraped, store the data in a DataFrame
         df = cu.create_df(({'quotes': self.all_quotes}))
-        cu.save_df(df, self.data_path)
+        cu.save_df(df, 'csv', self.data_path)
         cu.display_df(df, 10)
 
         # Create a SQLite connection using the provided database path.
