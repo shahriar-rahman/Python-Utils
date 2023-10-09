@@ -33,9 +33,13 @@ obj.create_df(key_dict={'col': 'values'})
 ```
 • Save Dataframe
 ```py3
-obj.create_df(df, path)         
+obj.save_df(df, path)         
 ```
 • Display Dataframe
 ```py3
-obj.create_df(df, contents=5)         
+obj.display_df(df, contents=5)         
+```
+• Load Dataframe
+```py3
+obj.load_df(ext_type='csv', path, d_type=False)           
 ```
