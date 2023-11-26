@@ -7,7 +7,7 @@
 <br/>
 
 ## Description
-A Python package that includes several common Python util functions.
+A Python package that includes several common Python util functions. 
 
 <br/>
 
