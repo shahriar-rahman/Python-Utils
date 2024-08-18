@@ -41,5 +41,5 @@ obj.display_df(df, contents=5)
 ```
 • Load Dataframe
 ```py3
-obj.load_df(ext_type='csv', path, d_type=False)           
+obj.load_df(ext_type='csv', library='pd', path='path_to_csv, d_type=False)           
 ```
